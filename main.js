@@ -6,6 +6,7 @@ const fetch = require('node-fetch')
 const fetchRoutes = async () => {
 	let response = await fetch(`https://api-v3.mbta.com/routes?filter[type]=0,1`).then(response => response.json())
 	let routes = response.data.map(line => line.attributes.long_name)
+	console.log("List of all subway routes in long name form:")
 	console.log(routes)
 }
 
@@ -183,7 +184,7 @@ const calculateTripBetween = async (stop1, stop2) => {
 			return findAllStopsHelper(middle, s2, usedLines, seenStops)
 		}
 	}
-	
+
 	findAllStops(stop1data, stop2data)
 }
 
